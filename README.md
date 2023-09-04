@@ -214,6 +214,7 @@ promises have been fulfilled. The serialized JSON body is an object
 that has the same key names as the promises object argument. If any
 of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
+
 ```ts
 import { created } from 'remix-response';
 export const action = async () => {
@@ -223,15 +224,18 @@ export const action = async () => {
   });
 };
 ```
+
 </dd>
 <dt><a href="#created">created</a></dt>
 <dd><p>This is a shortcut for creating a responses with <code>status: 204</code>.</p>
+
 ```ts
 import { created } from 'remix-response';
 export const action = async () => {
   return noContent();
 };
 ```
+
 </dd>
 <dt><a href="#noContent">noContent</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -240,6 +244,7 @@ promises have been fulfilled. The serialized JSON body is an object
 that has the same key names as the promises object argument. If any
 of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
+
 ```ts
 import { resetContent } from 'remix-response';
 export const loader = async () => {
@@ -249,6 +254,7 @@ export const loader = async () => {
   });
 };
 ```
+
 </dd>
 <dt><a href="#resetContent">resetContent</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -257,6 +263,7 @@ promises have been fulfilled. The serialized JSON body is an object
 that has the same key names as the promises object argument. If any
 of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
+
 ```ts
 import { partialContent } from 'remix-response';
 export const loader = async () => {
@@ -266,18 +273,21 @@ export const loader = async () => {
   });
 };
 ```
+
 </dd>
 <dt><a href="#partialContent">partialContent</a></dt>
 <dd><p>This is a shortcut for creating a redirect response with <code>status: 301</code>. The provided string will be set as the location header in the
 response.</p>
 <p>This should be used when the URL of the requested resource has been
 changed permanently. Browsers will cache this redirect.</p>
+
 ```ts
 import { movedPermanently } from 'remix-response';
 export const loader = async () => {
   return movedPermanently('https://www.example.com/');
 };
 ```
+
 </dd>
 <dt><a href="#movedPermanently">movedPermanently</a></dt>
 <dd><p>This is a shortcut for creating a redirect response with <code>status: 302</code>. The provided string will be set as the location header in the
@@ -285,12 +295,14 @@ response.</p>
 <p>This should be used when the URI of requested resource has been
 changed temporarily. Browsers will not cache this redirectly and it
 is commonly used in action functions.</p>
+
 ```ts
 import { found } from 'remix-response';
 export const action = async () => {
   return found('https://www.example.com/');
 };
 ```
+
 </dd>
 <dt><a href="#found">found</a></dt>
 <dd><p>This is a shortcut for creating a redirect response with <code>status: 303</code>. The provided string will be set as the location header in the
@@ -301,12 +313,14 @@ a representation of a real-world object or an upload-progress
 page). This response code is often sent back as a result of PUT or
 POST. The method used to display this redirected page is always
 GET.</p>
+
 ```ts
 import { seeOther } from 'remix-response';
 export const action = async () => {
   return seeOther('https://www.example.com/');
 };
 ```
+
 </dd>
 <dt><a href="#seeOther">seeOther</a></dt>
 <dd><p>This is a shortcut for creating a redirect response with <code>status: 304</code>. The provided string will be set as the location header in the
@@ -314,6 +328,7 @@ response.</p>
 <p>This is used for caching purposes. It tells the client that the
 response has not been modified, so the client can continue to use
 the same cached version of the response.</p>
+
 ```ts
 import { notModified } from 'remix-response';
 export const loader = async ({ request }: LoaderArgs) => {
@@ -322,6 +337,7 @@ export const loader = async ({ request }: LoaderArgs) => {
   }
 };
 ```
+
 </dd>
 <dt><a href="#notModified">notModified</a></dt>
 <dd><p>This is a shortcut for creating a redirect response with <code>status: 307</code>. The provided string will be set as the location header in the
@@ -332,12 +348,14 @@ prior request. This has the same semantics as the <code>302 Found</code> HTTP
 response code, with the exception that the user agent must not
 change the HTTP method used: if a <code>POST</code> was used in the first
 request, a <code>POST</code> must be used in the second request.</p>
+
 ```ts
 import { temporaryRedirect } from 'remix-response';
 export const action = async () => {
   return temporaryRedirect('https://www.example.com/');
 };
 ```
+
 </dd>
 <dt><a href="#temporaryRedirect">temporaryRedirect</a></dt>
 <dd><p>This is a shortcut for creating a redirect response with <code>status: 308</code>. The provided string will be set as the location header in the
@@ -347,12 +365,14 @@ URI. This has the same semantics as the <code>301 Moved Permanently</code> HTTP
 response code, with the exception that the user agent must not
 change the HTTP method used: if a <code>POST</code> was used in the first
 request, a <code>POST</code> must be used in the second request.</p>
+
 ```ts
 import { permanentRedirect } from 'remix-response';
 export const action = async () => {
   return permanentRedirect('https://www.example.com/');
 };
 ```
+
 </dd>
 <dt><a href="#permanentRedirect">permanentRedirect</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -363,6 +383,7 @@ of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>This should be used when the action cannot or will not process the
 request due to something that is perceived to be a client error.</p>
+
 ```ts
 import type { ActionArgs } from &quot;@remix-run/node&quot;;
 import { badRequest } from 'remix-response';
@@ -373,6 +394,7 @@ export async function action({ request }: ActionArgs) {
   });
 };
 ```
+
 </dd>
 <dt><a href="#badRequest">badRequest</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -386,6 +408,7 @@ request because the user is unauthenticated.</p>
 <p>Although the HTTP standard specifies &quot;unauthorized&quot;, semantically
 this response means &quot;unauthenticated&quot;. That is, the client must
 authenticate itself to get the requested response.</p>
+
 ```ts
 import type { ActionArgs } from &quot;@remix-run/node&quot;;
 import { unauthorized } from 'remix-response';
@@ -396,6 +419,7 @@ export async function action({ request }: ActionArgs) {
   });
 };
 ```
+
 </dd>
 <dt><a href="#unauthorized">unauthorized</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -409,6 +433,7 @@ request because the user does not have access rights to the
 content; that is, it is unauthorized, so the server is refusing to
 give the requested resource. Unlike <code>401 Unauthorized</code>, the client's
 identity is known to the server.</p>
+
 ```ts
 import type { ActionArgs } from &quot;@remix-run/node&quot;;
 import { forbidden } from 'remix-response';
@@ -419,6 +444,7 @@ export async function action({ request }: ActionArgs) {
   });
 };
 ```
+
 </dd>
 <dt><a href="#forbidden">forbidden</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -430,6 +456,7 @@ copied over to the fulfilled object.</p>
 <p>This should be used when the loader find the requested resource. In
 the browser, this means the URL is not recognized and the brower
 will not suggest the URL as an autocomplete option int he future</p>
+
 ```ts
 import { notFound } from 'remix-response';
 export async function loader() {
@@ -439,6 +466,7 @@ export async function loader() {
   });
 };
 ```
+
 </dd>
 <dt><a href="#notFound">notFound</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -450,6 +478,7 @@ copied over to the fulfilled object.</p>
 <p>This should be used when the request method is known by the server
 but is not supported by the target resource. For example, an API
 may not allow calling DELETE to remove a resource.</p>
+
 ```ts
 import { methodNotAllowed } from 'remix-response';
 export async function action() {
@@ -458,6 +487,7 @@ export async function action() {
   });
 };
 ```
+
 </dd>
 <dt><a href="#methodNotAllowed">methodNotAllowed</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -479,6 +509,7 @@ be completely happy, they will prefer this to an error code.</p>
 <p>If a server returns such an error status, the body of the message
 should contain the list of the available representations of the
 resources, allowing the user to choose among them.</p>
+
 ```ts
 import { notAcceptable } from 'remix-response';
 export async function action() {
@@ -487,6 +518,7 @@ export async function action() {
   });
 };
 ```
+
 </dd>
 <dt><a href="#notAcceptable">notAcceptable</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -497,6 +529,7 @@ of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>This should be used to indicate aa request conflicts with the
 current state of the server.</p>
+
 ```ts
 import { conflict } from 'remix-response';
 export async function action() {
@@ -505,6 +538,7 @@ export async function action() {
   });
 };
 ```
+
 </dd>
 <dt><a href="#conflict">conflict</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -516,6 +550,7 @@ copied over to the fulfilled object.</p>
 <p>This should be used when a resource has been permanently deleted
 from server, with no forwarding address. Clients are expected to
 remove their caches and links to the resource.</p>
+
 ```ts
 import { gone } from 'remix-response';
 export async function action() {
@@ -524,6 +559,7 @@ export async function action() {
   });
 };
 ```
+
 </dd>
 <dt><a href="#gone">gone</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -535,6 +571,7 @@ copied over to the fulfilled object.</p>
 <p>This should be used to indicated the client sent preconditions in
 its headers (usually <code>If-Unmodified-Since</code> or <code>If-None-Match</code>) which
 the server does not meet.</p>
+
 ```ts
 import { preconditionFailed } from 'remix-response';
 export async function action() {
@@ -543,6 +580,7 @@ export async function action() {
   });
 };
 ```
+
 </dd>
 <dt><a href="#preconditionFailed">preconditionFailed</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -553,6 +591,7 @@ of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>This should be used to indicated the expectation indicated by the
 <code>Expect</code> request header field cannot be met by the server.</p>
+
 ```ts
 import { expectationFailed } from 'remix-response';
 export async function action() {
@@ -561,6 +600,7 @@ export async function action() {
   });
 };
 ```
+
 </dd>
 <dt><a href="#expectationFailed">expectationFailed</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -570,6 +610,7 @@ that has the same key names as the promises object argument. If any
 of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>The server refuses the attempt to brew coffee with a teapot.</p>
+
 ```ts
 import { teapot } from 'remix-response';
 export async function action() {
@@ -578,6 +619,7 @@ export async function action() {
   });
 };
 ```
+
 </dd>
 <dt><a href="#teapot">teapot</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -591,6 +633,7 @@ response is intended to prevent the 'lost update' problem, where a
 client GETs a resource's state, modifies it and PUTs it back to the
 server, when meanwhile a third party has modified the state on the
 server, leading to a conflict.</p>
+
 ```ts
 import { preconditionFailed } from 'remix-response';
 export async function action() {
@@ -599,6 +642,7 @@ export async function action() {
   });
 };
 ```
+
 </dd>
 <dt><a href="#preconditionRequired">preconditionRequired</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -609,6 +653,7 @@ of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>This is used to indacate the user has sent too many requests in a
 given amount of time (&quot;rate limiting&quot;).</p>
+
 ```ts
 import { tooManyRequests } from 'remix-response';
 export async function action() {
@@ -617,6 +662,7 @@ export async function action() {
   });
 };
 ```
+
 </dd>
 <dt><a href="#tooManyRequests">tooManyRequests</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -626,6 +672,7 @@ that has the same key names as the promises object argument. If any
 of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>The server has encountered a situation it does not know how to handle.</p>
+
 ```ts
 import { serverError } from 'remix-response';
 export async function loader() {
@@ -634,6 +681,7 @@ export async function loader() {
   });
 };
 ```
+
 </dd>
 <dt><a href="#serverError">serverError</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -646,6 +694,7 @@ copied over to the fulfilled object.</p>
 required to fulfill the request. This status can also send a
 <code>Retry-After</code> header, telling the requester when to check back to see
 if the functionality is supported by then.</p>
+
 ```ts
 import { notImplemented } from 'remix-response';
 export async function loader() {
@@ -656,6 +705,7 @@ export async function loader() {
   });
 };
 ```
+
 </dd>
 <dt><a href="#notImplemented">notImplemented</a></dt>
 <dd><p>This is a shortcut for creating <code>application/json</code> responses with
@@ -670,6 +720,7 @@ response should be used for temporary conditions and the
 <code>Retry-After</code> HTTP header should, if possible, contain the
 estimated time before the recovery of the service. This is used to
 indicate the server does not support the functionality</p>
+
 ```ts
 import { serviceUnavailable } from 'remix-response';
 export async function loader() {
@@ -680,6 +731,7 @@ export async function loader() {
   });
 };
 ```
+
 </dd>
 </dl>
 
@@ -695,6 +747,7 @@ of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>This works similar to <code>Promise.all([])</code>, but takes an object
 instead of an array for its promises argument</p>
+
 ```ts
 import { ok } from 'remix-response';
 export const loader = async () => {
@@ -704,6 +757,7 @@ export const loader = async () => {
   });
 };
 ```
+
 </dd>
 </dl>
 
@@ -716,6 +770,7 @@ promises have been fulfilled. The serialized JSON body is an object
 that has the same key names as the promises object argument. If any
 of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
+
 ```ts
 import { created } from 'remix-response';
 export const action = async () => {
@@ -725,6 +780,7 @@ export const action = async () => {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -738,12 +794,14 @@ export const action = async () => {
 
 ## created
 <p>This is a shortcut for creating a responses with <code>status: 204</code>.</p>
+
 ```ts
 import { created } from 'remix-response';
 export const action = async () => {
   return noContent();
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -761,6 +819,7 @@ promises have been fulfilled. The serialized JSON body is an object
 that has the same key names as the promises object argument. If any
 of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
+
 ```ts
 import { resetContent } from 'remix-response';
 export const loader = async () => {
@@ -770,6 +829,7 @@ export const loader = async () => {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -788,6 +848,7 @@ promises have been fulfilled. The serialized JSON body is an object
 that has the same key names as the promises object argument. If any
 of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
+
 ```ts
 import { partialContent } from 'remix-response';
 export const loader = async () => {
@@ -797,6 +858,7 @@ export const loader = async () => {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -813,12 +875,14 @@ export const loader = async () => {
 response.</p>
 <p>This should be used when the URL of the requested resource has been
 changed permanently. Browsers will cache this redirect.</p>
+
 ```ts
 import { movedPermanently } from 'remix-response';
 export const loader = async () => {
   return movedPermanently('https://www.example.com/');
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -835,12 +899,14 @@ response.</p>
 <p>This should be used when the URI of requested resource has been
 changed temporarily. Browsers will not cache this redirectly and it
 is commonly used in action functions.</p>
+
 ```ts
 import { found } from 'remix-response';
 export const action = async () => {
   return found('https://www.example.com/');
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -860,12 +926,14 @@ a representation of a real-world object or an upload-progress
 page). This response code is often sent back as a result of PUT or
 POST. The method used to display this redirected page is always
 GET.</p>
+
 ```ts
 import { seeOther } from 'remix-response';
 export const action = async () => {
   return seeOther('https://www.example.com/');
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -882,6 +950,7 @@ response.</p>
 <p>This is used for caching purposes. It tells the client that the
 response has not been modified, so the client can continue to use
 the same cached version of the response.</p>
+
 ```ts
 import { notModified } from 'remix-response';
 export const loader = async ({ request }: LoaderArgs) => {
@@ -890,6 +959,7 @@ export const loader = async ({ request }: LoaderArgs) => {
   }
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -909,12 +979,14 @@ prior request. This has the same semantics as the <code>302 Found</code> HTTP
 response code, with the exception that the user agent must not
 change the HTTP method used: if a <code>POST</code> was used in the first
 request, a <code>POST</code> must be used in the second request.</p>
+
 ```ts
 import { temporaryRedirect } from 'remix-response';
 export const action = async () => {
   return temporaryRedirect('https://www.example.com/');
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -933,12 +1005,14 @@ URI. This has the same semantics as the <code>301 Moved Permanently</code> HTTP
 response code, with the exception that the user agent must not
 change the HTTP method used: if a <code>POST</code> was used in the first
 request, a <code>POST</code> must be used in the second request.</p>
+
 ```ts
 import { permanentRedirect } from 'remix-response';
 export const action = async () => {
   return permanentRedirect('https://www.example.com/');
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -958,6 +1032,7 @@ of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>This should be used when the action cannot or will not process the
 request due to something that is perceived to be a client error.</p>
+
 ```ts
 import type { ActionArgs } from &quot;@remix-run/node&quot;;
 import { badRequest } from 'remix-response';
@@ -968,6 +1043,7 @@ export async function action({ request }: ActionArgs) {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -991,6 +1067,7 @@ request because the user is unauthenticated.</p>
 <p>Although the HTTP standard specifies &quot;unauthorized&quot;, semantically
 this response means &quot;unauthenticated&quot;. That is, the client must
 authenticate itself to get the requested response.</p>
+
 ```ts
 import type { ActionArgs } from &quot;@remix-run/node&quot;;
 import { unauthorized } from 'remix-response';
@@ -1001,6 +1078,7 @@ export async function action({ request }: ActionArgs) {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1024,6 +1102,7 @@ request because the user does not have access rights to the
 content; that is, it is unauthorized, so the server is refusing to
 give the requested resource. Unlike <code>401 Unauthorized</code>, the client's
 identity is known to the server.</p>
+
 ```ts
 import type { ActionArgs } from &quot;@remix-run/node&quot;;
 import { forbidden } from 'remix-response';
@@ -1034,6 +1113,7 @@ export async function action({ request }: ActionArgs) {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1055,6 +1135,7 @@ copied over to the fulfilled object.</p>
 <p>This should be used when the loader find the requested resource. In
 the browser, this means the URL is not recognized and the brower
 will not suggest the URL as an autocomplete option int he future</p>
+
 ```ts
 import { notFound } from 'remix-response';
 export async function loader() {
@@ -1064,6 +1145,7 @@ export async function loader() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1085,6 +1167,7 @@ copied over to the fulfilled object.</p>
 <p>This should be used when the request method is known by the server
 but is not supported by the target resource. For example, an API
 may not allow calling DELETE to remove a resource.</p>
+
 ```ts
 import { methodNotAllowed } from 'remix-response';
 export async function action() {
@@ -1093,6 +1176,7 @@ export async function action() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1124,6 +1208,7 @@ be completely happy, they will prefer this to an error code.</p>
 <p>If a server returns such an error status, the body of the message
 should contain the list of the available representations of the
 resources, allowing the user to choose among them.</p>
+
 ```ts
 import { notAcceptable } from 'remix-response';
 export async function action() {
@@ -1132,6 +1217,7 @@ export async function action() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1152,6 +1238,7 @@ of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>This should be used to indicate aa request conflicts with the
 current state of the server.</p>
+
 ```ts
 import { conflict } from 'remix-response';
 export async function action() {
@@ -1160,6 +1247,7 @@ export async function action() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1181,6 +1269,7 @@ copied over to the fulfilled object.</p>
 <p>This should be used when a resource has been permanently deleted
 from server, with no forwarding address. Clients are expected to
 remove their caches and links to the resource.</p>
+
 ```ts
 import { gone } from 'remix-response';
 export async function action() {
@@ -1189,6 +1278,7 @@ export async function action() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1210,6 +1300,7 @@ copied over to the fulfilled object.</p>
 <p>This should be used to indicated the client sent preconditions in
 its headers (usually <code>If-Unmodified-Since</code> or <code>If-None-Match</code>) which
 the server does not meet.</p>
+
 ```ts
 import { preconditionFailed } from 'remix-response';
 export async function action() {
@@ -1218,6 +1309,7 @@ export async function action() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1238,6 +1330,7 @@ of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>This should be used to indicated the expectation indicated by the
 <code>Expect</code> request header field cannot be met by the server.</p>
+
 ```ts
 import { expectationFailed } from 'remix-response';
 export async function action() {
@@ -1246,6 +1339,7 @@ export async function action() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1265,6 +1359,7 @@ that has the same key names as the promises object argument. If any
 of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>The server refuses the attempt to brew coffee with a teapot.</p>
+
 ```ts
 import { teapot } from 'remix-response';
 export async function action() {
@@ -1273,6 +1368,7 @@ export async function action() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1296,6 +1392,7 @@ response is intended to prevent the 'lost update' problem, where a
 client GETs a resource's state, modifies it and PUTs it back to the
 server, when meanwhile a third party has modified the state on the
 server, leading to a conflict.</p>
+
 ```ts
 import { preconditionFailed } from 'remix-response';
 export async function action() {
@@ -1304,6 +1401,7 @@ export async function action() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1324,6 +1422,7 @@ of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>This is used to indacate the user has sent too many requests in a
 given amount of time (&quot;rate limiting&quot;).</p>
+
 ```ts
 import { tooManyRequests } from 'remix-response';
 export async function action() {
@@ -1332,6 +1431,7 @@ export async function action() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1351,6 +1451,7 @@ that has the same key names as the promises object argument. If any
 of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>The server has encountered a situation it does not know how to handle.</p>
+
 ```ts
 import { serverError } from 'remix-response';
 export async function loader() {
@@ -1359,6 +1460,7 @@ export async function loader() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1381,6 +1483,7 @@ copied over to the fulfilled object.</p>
 required to fulfill the request. This status can also send a
 <code>Retry-After</code> header, telling the requester when to check back to see
 if the functionality is supported by then.</p>
+
 ```ts
 import { notImplemented } from 'remix-response';
 export async function loader() {
@@ -1391,6 +1494,7 @@ export async function loader() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1415,6 +1519,7 @@ response should be used for temporary conditions and the
 <code>Retry-After</code> HTTP header should, if possible, contain the
 estimated time before the recovery of the service. This is used to
 indicate the server does not support the functionality</p>
+
 ```ts
 import { serviceUnavailable } from 'remix-response';
 export async function loader() {
@@ -1425,6 +1530,7 @@ export async function loader() {
   });
 };
 ```
+
 
 
 **Kind**: global variable  
@@ -1445,6 +1551,7 @@ of the values in the object are not promises, they will simply be
 copied over to the fulfilled object.</p>
 <p>This works similar to <code>Promise.all([])</code>, but takes an object
 instead of an array for its promises argument</p>
+
 ```ts
 import { ok } from 'remix-response';
 export const loader = async () => {
@@ -1454,7 +1561,6 @@ export const loader = async () => {
   });
 };
 ```
-
 
 **Kind**: global constant  
 
