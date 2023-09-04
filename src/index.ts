@@ -132,6 +132,23 @@ const redirectFunction = (status: number, url: string) => {
 };
 
 // 2XX
+/**
+ * This is a shortcut for creating `application/json` responses. Converts `data`
+ * to JSON and sets the `Content-Type` header.
+ *
+ * This works similar to `Promise.all([])`, but takes an object
+ * instead of an array for its promises argument
+ * 
+ * This is a shortcut for creating `application/json` responses with
+ * status: 200. Converts `data` into JSON when all the given promises
+ * have been fulfilled. The serialized JSON body is an object that has
+ * the same key names as the promises object argument. If any of the
+ * values in the object are not promises, they will simply be copied
+ * over to the fulfilled object.
+ *
+ * @param data - A JavaScript object that will be serialized as JSON.
+ * @param init? - An optional RequestInit configuration object.
+ */
 export const ok: ResponseFunction = responseFunction.bind(null, 200);
 export const created = responseFunction.bind(null, 201);
 export const noContent = (init?: Init) =>
