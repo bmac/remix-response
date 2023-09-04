@@ -1,0 +1,62 @@
+{
+  "name": "remix-response",
+  "version": "1.0.0",
+  "repository": "git@github.com:bmac/remix-response",
+  "license": "MIT",
+  "author": "Brendan McLoughlin <bmac325@gmail.com>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup-node src/index.ts --format cjs,esm --external 'fs-extra' --dts --clean",
+    "docs:generate": "readme-api-generator src/index.ts --ts",
+    "lint": "yarn prettier --check **/*.ts",
+    "prettier:fix": "yarn prettier --write **/*.ts",
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn build",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@scalvert/readme-api-generator": "^0.2.3",
+    "@types/node": "^16.9.1",
+    "@remix-run/web-fetch": "^4.3.8",
+    "prettier": "^2.3.0",
+    "release-it": "^16.1.5",
+    "release-it-lerna-changelog": "^5.0.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.1.6",
+    "vitest": "^0.34.3"
+  },
+  "engines": {
+    "node": ">= 14.*"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "release-it": {
+    "plugins": {
+      "release-it-lerna-changelog": {
+        "infile": "CHANGELOG.md",
+        "launchEditor": true
+      }
+    },
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
+    }
+  }
+}
