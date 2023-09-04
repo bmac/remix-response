@@ -115,7 +115,7 @@ const redirectFunction = (status: number, url: string) => {
  *
  * This works similar to `Promise.all([])`, but takes an object
  * instead of an array for its promises argument
- * 
+ *
  *
  * ```ts
  * import { ok } from 'remix-response';
@@ -224,7 +224,7 @@ export const partialContent = responseFunction.bind(null, 206);
  * This is a shortcut for creating a redirect response with `status:
  * 301`. The provided string will be set as the location header in the
  * response.
- * 
+ *
  * This should be used when the URL of the requested resource has been
  * changed permanently. Browsers will cache this redirect.
  *
@@ -243,7 +243,7 @@ export const movedPermanently = redirectFunction.bind(null, 301);
  * This is a shortcut for creating a redirect response with `status:
  * 302`. The provided string will be set as the location header in the
  * response.
- * 
+ *
  * This should be used when the URI of requested resource has been
  * changed temporarily. Browsers will not cache this redirectly and it
  * is commonly used in action functions.
@@ -264,7 +264,7 @@ export const found = redirectFunction.bind(null, 302);
  * This is a shortcut for creating a redirect response with `status:
  * 303`. The provided string will be set as the location header in the
  * response.
- * 
+ *
  * This indicates that the redirects don't link to the requested
  * resource itself, but to another page (such as a confirmation page,
  * a representation of a real-world object or an upload-progress
@@ -287,7 +287,7 @@ export const seeOther = redirectFunction.bind(null, 303);
  * This is a shortcut for creating a redirect response with `status:
  * 304`. The provided string will be set as the location header in the
  * response.
- * 
+ *
  * This is used for caching purposes. It tells the client that the
  * response has not been modified, so the client can continue to use
  * the same cached version of the response.
@@ -309,7 +309,7 @@ export const notModified = redirectFunction.bind(null, 304);
  * This is a shortcut for creating a redirect response with `status:
  * 307`. The provided string will be set as the location header in the
  * response.
- * 
+ *
  * This should be used to direct the client to get the requested
  * resource at another URI with the same method that was used in the
  * prior request. This has the same semantics as the `302 Found` HTTP
@@ -333,7 +333,7 @@ export const temporaryRedirect = redirectFunction.bind(null, 307);
  * This is a shortcut for creating a redirect response with `status:
  * 308`. The provided string will be set as the location header in the
  * response.
- * 
+ *
  * This means that the resource is now permanently located at another
  * URI. This has the same semantics as the `301 Moved Permanently` HTTP
  * response code, with the exception that the user agent must not
