@@ -4,6 +4,7 @@
   "repository": "git@github.com:bmac/remix-response",
   "license": "MIT",
   "author": "Brendan McLoughlin <bmac325@gmail.com>",
+  "keywords": ["remix", "remix.run", "response"],
   "type": "module",
   "exports": {
     ".": {
