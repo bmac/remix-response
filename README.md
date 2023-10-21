@@ -100,7 +100,8 @@ export const loader = async ({ request, context }: LoaderArgs) => {
   const listings = fetchListings(request.url);
   const recommendations = fetchRecommendations(context.user);
 
-  return ok({
+-  return json({
++  return ok({
 -    listings: await listings,
 +    listings,
 -    recommendations: await recommendations,
